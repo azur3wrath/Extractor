@@ -1,0 +1,28 @@
+Function Extract22FValue(cell As Range) As String
+    Dim cellContent As String
+    Dim startPos As Long
+    Dim endPos As Long
+    Dim extractedValue As String
+
+    cellContent = cell.Value
+    
+    startPos = InStr(cellContent, "22F::CAEV//")
+    
+    If startPos > 0 Then
+        endPos = startPos + Len("22F::CAEV//") + 4
+        extractedValue = Mid(cellContent, startPos, endPos - startPos)
+        Extract22FValue = extractedValue
+    Else
+        Extract22FValue = ""
+    End If
+End Function
+
+
+
+Otwórz Excel i naciśnij Alt + F11, aby otworzyć Edytor VBA.
+Wybierz Insert > Module, aby dodać nowy moduł.
+Wklej poniższy kod VBA do modułu:
+Zamknij Edytor VBA i wróć do arkusza Excel.
+W dowolnej pustej komórce wpisz formułę, aby przetestować funkcję, na przykład:
+=Extract22FValue(A1)
+Gdy wpiszesz tę formułę w komórce, powinna ona zwrócić wartość :22F::CAEV//DVCA z przykładowej zawartości komórki A1.
