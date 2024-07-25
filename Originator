@@ -1,0 +1,13 @@
+Function ExtractFixedLengthValue(cell As Range) As String
+    Dim cellContent As String
+    Dim startPos As Long
+    Dim lengthOfExtract As Long
+    Dim extractedValue As String
+
+    cellContent = cell.Value
+    startPos = 13 ' Pozycja, od której zaczyna się wartość do wyciągnięcia
+    lengthOfExtract = 13 ' Długość wyciąganego ciągu
+
+    extractedValue = Mid(cellContent, startPos, lengthOfExtract)
+    ExtractFixedLengthValue = extractedValue
+End Function
