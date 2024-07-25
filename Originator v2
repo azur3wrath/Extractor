@@ -1,0 +1,19 @@
+Function ExtractFixedLengthValue(cell As Range) As String
+    Dim cellContent As String
+    Dim startPos As Long
+    Dim extractedValue As String
+    Dim searchString As String
+
+    cellContent = cell.Value
+    searchString = "{2:O"
+    
+    startPos = InStr(cellContent, searchString)
+    
+    If startPos > 0 Then
+        startPos = startPos + Len(searchString) ' Przesunięcie pozycji startowej za "2:O"
+        extractedValue = Mid(cellContent, startPos, 13)
+        ExtractFixedLengthValue = extractedValue
+    Else
+        ExtractFixedLengthValue = ""
+    End If
+End Function
